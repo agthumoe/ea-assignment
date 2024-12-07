@@ -4,14 +4,14 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
     <context:annotation-config />
-    <bean id="vehicle1" class="edu.miu.cs544.moe.xml.Car" />
-    <bean id="vehicle2" class="edu.miu.cs544.moe.xml.Bike" />
-    <bean id="game" class="edu.miu.cs544.moe.xml.GameImpl" init-method="init" destroy-method="beforeDestroy">
-        <constructor-arg ref="vehicleProxy" />
+    <bean id="vehicle1" class="edu.miu.cs544.moe.Car" />
+    <bean id="vehicle2" class="edu.miu.cs544.moe.Bike" />
+    <bean id="game" class="edu.miu.cs544.moe.Game" init-method="init" destroy-method="beforeDestroy">
+        <property name="vehicle" ref="vehicle1" />
     </bean>
-    <bean id="loggingAspect" class="edu.miu.cs544.moe.xml.aspects.LoggingAspect" />
-    <bean id="vehicleProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="target" ref="vehicle2" />
+    <bean id="loggingAspect" class="edu.miu.cs544.moe.LoggingAspect" />
+    <bean id="gameProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="game" />
         <property name="interceptorNames">
             <list>
                 <value>loggingAspect</value>

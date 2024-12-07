@@ -1,16 +1,13 @@
-package edu.miu.cs544.moe.xml;
+package edu.miu.cs544.moe;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class GameImpl implements Game, InitializingBean, DisposableBean {
+// if I add GameInterface, it works fine.
+public class Game implements InitializingBean, DisposableBean {
     private Vehicle vehicle;
-
-    public GameImpl(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
 
     public void init() {
         System.out.println("init method is called.");
@@ -38,12 +35,10 @@ public class GameImpl implements Game, InitializingBean, DisposableBean {
         return vehicle;
     }
 
-    @Override
     public void start() {
         vehicle.move();
     }
 
-    @Override
     public void stop() {
         System.out.println("Game over!");
     }
