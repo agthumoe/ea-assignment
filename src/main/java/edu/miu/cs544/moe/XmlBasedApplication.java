@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class XmlBasedApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("configs.xml");
-        Game game = (Game) context.getBean("gameProxy");
+        Game game = context.getBean(Game.class);
         game.start();
         game.stop();
         context.close();

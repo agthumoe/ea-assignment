@@ -12,7 +12,7 @@ public abstract class Game {
     private Vehicle vehicle;
 
     @Autowired
-    public Game(@Qualifier("bike") Vehicle vehicle) {
+    public Game(@Qualifier("car") Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 

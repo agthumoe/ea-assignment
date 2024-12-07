@@ -8,7 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 public class GameImpl implements Game, InitializingBean, DisposableBean {
     private Vehicle vehicle;
 
-    public GameImpl(Car vehicle) {
+    public GameImpl(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 
